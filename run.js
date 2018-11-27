@@ -23,18 +23,18 @@ exports.compare = (envFile = '.env', envSampleFile = 'env.sample', autoFix = fal
 
   Object.keys(predefined).forEach(key => {
     if (!current[key]) {
-    newLines.push(`${key}=${predefined[key]}`);
-  }
-});
+      newLines.push(`${key}=${predefined[key]}`);
+    }
+  });
 
   if (!autoFix) {
     if (newLines.length >= 1) {
       console.log();
       console.log('\x1b[0;31m%s\x1b[0m', '✓ FAILED', caption);
-      console.log('  The following config is not added to your .env file yet:');
+      console.log(`  The following variable is not listed in your ${envFile} file:`);
       newLines.forEach(newLine => {
         console.log(`  - ${newLine}`);
-    });
+      });
       console.log();
 
       return process.exit(1);
@@ -50,10 +50,10 @@ exports.compare = (envFile = '.env', envSampleFile = 'env.sample', autoFix = fal
   console.log('\x1b[0;33m%s\x1b[0m', '✨ AUTOFIX', caption);
 
   if (newLines.length >= 1) {
-    fs.appendFileSync(envFile, `\n# [AUTO ADD] ${timeToWrite()}\n`);
+    fs.appendFileSync(envFile, `\n# [auto-update-env] ${timeToWrite()}\n`);
     newLines.forEach(newLine => {
       fs.appendFileSync(envFile, `${newLine}\n`);
-  });
+    });
   }
 
   return process.exit(0);
