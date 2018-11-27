@@ -1,3 +1,6 @@
+#### Package
+Go to [auto-update-env](hhttps://www.npmjs.com/package/auto-update-env)
+
 #### Installation
 `yarn add auto-update-env`
 
