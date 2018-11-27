@@ -1,5 +1,5 @@
 {
-  "name": "@jochristianto/auto-update-env",
+  "name": "auto-update-env",
   "version": "0.0.1",
   "description": "Update your .env file automatically",
   "main": "run.js",
