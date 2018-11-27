@@ -1,0 +1,28 @@
+{
+  "name": "@jochristianto/auto-update-env",
+  "version": "0.0.1",
+  "description": "Update your .env file automatically",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jochristianto/auto-update-env.git"
+  },
+  "keywords": [
+    "auto",
+    "update",
+    "env"
+  ],
+  "author": "Jonathan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jochristianto/auto-update-env/issues"
+  },
+  "homepage": "https://github.com/jochristianto/auto-update-env#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "fs": "^0.0.1-security"
+  }
+}
