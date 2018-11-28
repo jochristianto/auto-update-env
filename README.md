@@ -1,5 +1,5 @@
-#### NPM Package
-Go to [auto-update-env](https://www.npmjs.com/package/auto-update-env)
+# auto-update-env
+[![NPM](https://nodei.co/npm/auto-update-env.png)](https://nodei.co/npm/auto-update-env/)
 
 #### Installation
 `yarn add auto-update-env`
