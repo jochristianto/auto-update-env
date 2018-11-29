@@ -1,6 +1,11 @@
 # auto-update-env
 [![NPM](https://nodei.co/npm/auto-update-env.png)](https://nodei.co/npm/auto-update-env/)
 
+![dependencies-status](https://david-dm.org/jochristianto/auto-update-env.svg)
+![dependencies-status](https://david-dm.org/jochristianto/auto-update-env/dev-status.svg)
+[![npm version](https://badge.fury.io/js/auto-update-env.svg)](https://badge.fury.io/js/auto-update-env) 
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/jochristianto/auto-update-env/)
+
 #### Installation
 `yarn add auto-update-env`
 
