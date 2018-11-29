@@ -22,7 +22,7 @@ exports.compare = (envFile = '.env', envSampleFile = 'env.sample', autoFix = fal
   const newLines = [];
 
   Object.keys(predefined).forEach(key => {
-    if (!current[key]) {
+    if (typeof current[key] === 'undefined') {
       newLines.push(`${key}=${predefined[key]}`);
     }
   });
