@@ -47,6 +47,7 @@ exports.compare = (envFile = '.env', envSampleFile = 'env.sample', autoFix = fal
     return process.exit(0);
   }
 
+  console.log();
   console.log('\x1b[0;33m%s\x1b[0m', '✨ AUTOFIX', caption);
 
   if (newLines.length >= 1) {
@@ -55,6 +56,7 @@ exports.compare = (envFile = '.env', envSampleFile = 'env.sample', autoFix = fal
       fs.appendFileSync(envFile, `${newLine}\n`);
     });
   }
+  console.log();
 
   return process.exit(0);
 };
