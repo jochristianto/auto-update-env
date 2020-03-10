@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/jochristianto/auto-update-env#readme",
   "dependencies": {
+    "consola": "^2.11.3",
     "dotenv": "^6.1.0",
     "fs": "^0.0.1-security"
   }

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const dotenv = require('dotenv');
+const consola = require('consola');
 
 const timeToWrite = () => {
   const now = new Date();
@@ -14,49 +15,53 @@ const timeToWrite = () => {
     (`0${m.getSeconds()}`).slice(-2)} WIB`;
 };
 
-exports.compare = (envFile = '.env', envSampleFile = 'env.sample', autoFix = false) => {
-  const current = dotenv.config({ path: envFile }).parsed;
-  const predefined = dotenv.config({ path: envSampleFile }).parsed;
+exports.compare = (autoFix = false, targetFile = '.env', sourceFile = '.env.sample') => {
+  const source = dotenv.config({ path: sourceFile }).parsed;
+  let target = dotenv.config({ path: targetFile }).parsed;
 
-  const caption = `Comparing "${envFile}" with "${envSampleFile}"`;
+  if (typeof source === 'undefined') {
+    consola.error('Source config file is not found: ' + sourceFile);
+    return process.exit(0);
+  }
+
+
+  if (typeof target === 'undefined') {
+    consola.error('Target config file is not found: ' + targetFile);
+    return process.exit(0);
+  }
+
+  consola.info(`Comparing "${targetFile}" with "${sourceFile}"`);
+
   const newLines = [];
-
-  Object.keys(predefined).forEach(key => {
-    if (typeof current[key] === 'undefined') {
-      newLines.push(`${key}=${predefined[key]}`);
+  Object.keys(source).forEach(key => {
+    if (typeof target[key] === 'undefined') {
+      newLines.push(`${key}=${source[key]}`);
     }
   });
 
   if (!autoFix) {
+    consola.info('Auto Add is Disabled');
     if (newLines.length >= 1) {
-      console.log();
-      console.log('\x1b[0;31m%s\x1b[0m', '✓ FAILED', caption);
-      console.log(`  The following variable is not listed in your ${envFile} file:`);
+      consola.success(`The following variable is not listed in your ${targetFile} file:`);
       newLines.forEach(newLine => {
-        console.log(`  - ${newLine}`);
+        consola.log(`  - ${newLine}`);
       });
-      console.log();
 
       return process.exit(1);
     }
 
-    console.log();
-    console.log('\x1b[0;32m%s\x1b[0m', '✓ SUCCESS', caption);
-    console.log();
+    consola.success('Success');
 
     return process.exit(0);
+  } else {
+    consola.info('Auto Add is Enabled');
+    if (newLines.length >= 1) {
+      consola.success(`The following variable is not listed in your ${targetFile} file and will be added to the list:`);
+      fs.appendFileSync(targetFile, `\n# [auto-update-env] ${timeToWrite()}\n`);
+      newLines.forEach(newLine => {
+        consola.log(`  - ${newLine}`);
+        fs.appendFileSync(targetFile, `${newLine}\n`);
+      });
+    }
   }
-
-  console.log();
-  console.log('\x1b[0;33m%s\x1b[0m', '✨ AUTOFIX', caption);
-
-  if (newLines.length >= 1) {
-    fs.appendFileSync(envFile, `\n# [auto-update-env] ${timeToWrite()}\n`);
-    newLines.forEach(newLine => {
-      fs.appendFileSync(envFile, `${newLine}\n`);
-    });
-  }
-  console.log();
-
-  return process.exit(0);
 };

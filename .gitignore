@@ -5,5 +5,5 @@ node_modules
 .idea/
 
 .env
-env.sample
+.env.sample
 test.js
