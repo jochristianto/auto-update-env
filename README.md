@@ -2,37 +2,53 @@
 [![NPM](https://nodei.co/npm/auto-update-env.png)](https://nodei.co/npm/auto-update-env/)
 
 ![dependencies-status](https://david-dm.org/jochristianto/auto-update-env.svg)
+
 ![dependencies-status](https://david-dm.org/jochristianto/auto-update-env/dev-status.svg)
+
 [![npm version](https://badge.fury.io/js/auto-update-env.svg)](https://badge.fury.io/js/auto-update-env) 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/jochristianto/auto-update-env/)
 
 #### Installation
-`yarn add auto-update-env`
+
+``` bash
+# If you are using Yarn
+$ yarn add auto-update-env --dev
+
+# If you are using NPM
+$ npm install auto-update-env --save-dev
+``` 
 
 #### Usage
 
-Create a file `envcheck.js` in your root directory. 
-```
-const autoUpdateEnv = require('auto-update-env');
+> To make sure that this module run properly, make sure you add the required files beforehand.
 
-const autoFix = process.argv.includes('-f') || process.argv.includes('--fix');
-autoUpdateEnv.compare('.env', 'env.sample', autoFix);
-```
-Please change `.env` and `env.sample` accordingly.
+1. Create a file `envcheck.js` in your root directory.
 
-Update your scripts in your `package.json` file to meet your requirement, for example:
-```
-  "scripts": {
-    "envcheck": "node envcheck.js",
-    "dev": "node envcheck.js --fix && backpack",
-    "build-staging": "node envcheck.js --fix && nuxt build && backpack build",
-  },
-```
+    ``` bash
+    # Load the package
+    const aue = require('auto-update-env');
 
-Once added, you can simply call it using `yarn envcheck`.
+    # (Optional) Check whether the command include auto-add command
+    const flag =  process.argv.includes('-f') || process.argv.includes('--fix');
+
+    # In this case, .env.sample is the source file and
+    # .env is the target file. Please update it accordingly.
+    aue.compare(flag, '.env.sample', '.env');
+    ```
+
+2. Update your scripts in your `package.json` file to meet your requirement, for example:
+    ``` bash
+    "scripts": {
+      "envcheck": "node envcheck.js",
+    },
+    ```
+
+    Once added, you can simply call it using `yarn envcheck` or `npm run envcheck`.
 
 #### Options
-| Flag     | Description                                                                     |
-| -------- | ------------------------------------------------------------------------------- |
-| `--fix`  | Automatically add the missing variable to your current .env                     |
-| `-f`     | Shortcode for `--fix`                                                           |
+
+| Flag     | Description | Usage Example |
+| -------- | ----------- | ------------- |
+| `--fix` | Automatically add the missing variable to your current .env | `yarn envcheck --fix` |
+| `-f` | Shortcode for `--fix` | `yarn envcheck -f` |
+

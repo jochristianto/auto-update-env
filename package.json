@@ -1,10 +1,10 @@
 {
   "name": "auto-update-env",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Update your .env file automatically",
   "main": "run.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "update",
     "env"
   ],
-  "author": "Jonathan",
+  "author": "Jonathan Christianto",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jochristianto/auto-update-env/issues"
