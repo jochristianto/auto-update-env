@@ -52,3 +52,9 @@ $ npm install auto-update-env --save-dev
 | `--fix` | Automatically add the missing variable to your current .env | `yarn envcheck --fix` |
 | `-f` | Shortcode for `--fix` | `yarn envcheck -f` |
 
+### Version History
+| Version   | Description |
+| --------- | ----------- |
+| 1.0.0     | Includes update to the code implementation. Now you can leave the default filenames empty. The label on the added keys are now changed from `[auto-update-env]` to `[aue]` followed by local time. |
+| 0.0.5     | Added the UTC+0700 time to the label of the newly added keys. |
+

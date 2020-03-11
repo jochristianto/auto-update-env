@@ -4,9 +4,6 @@ const consola = require('consola');
 
 const timeToWrite = () => {
   const m = new Date();
-  // const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  // const m = new Date(utc + (3600000 * 7));
-
   return `${m.getFullYear()}-${
     (`0${m.getMonth() + 1}`).slice(-2)}-${
     (`0${m.getDate()}`).slice(-2)} ${
