@@ -1,6 +1,8 @@
 # auto-update-env
-[![npm version](https://badge.fury.io/js/auto-update-env.svg)](https://badge.fury.io/js/auto-update-env) 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/jochristianto/auto-update-env/)
+![License](https://img.shields.io/npm/l/auto-update-env?color=blue&label=License)
+[![NPM](https://img.shields.io/npm/v/auto-update-env?color=blue&label=NPM%20Package)](https://www.npmjs.com/package/auto-update-env)
+![Downloads](https://img.shields.io/npm/dw/auto-update-env?color=blue&label=Downloads)
+
 
 ## Installation
 
